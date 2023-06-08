@@ -5,14 +5,28 @@ class User{
   String? name;
   String? age;
   String? email;
-  var password;
+  dynamic password;
   User(
       this.name,
       this.age,this.email,
       this.password
       );
-  void loginConfirmation(){
-    print("User Created Successfully");
+  void loginConfirmation(User user){
+    if(user.email!.contains("@")){
+      if(user.password.toString().length >= 8) {
+        addUserToList(user);
+        print("User Created Successfully");
+      }
+      else{
+        print("Password should be more than 7 character");
+      }
+
+    }
+    else{
+      print("Invalid Email");
+    }
+
+
   }
   void addUserToList(User user){
     Map<String,dynamic> tempUser = {
@@ -22,14 +36,13 @@ class User{
       "Email" : user.email,
     };
     allUserList.add(tempUser);
+    print(tempUser);
   }
 }
 
 main(){
 
   User userOne = User(stdin.readLineSync(), stdin.readLineSync(), stdin.readLineSync(),stdin.readLineSync());
-  userOne.addUserToList(userOne);
-  userOne.loginConfirmation();
-  print(User.allUserList);
+  userOne.loginConfirmation(userOne);
 
 }
