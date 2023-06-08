@@ -3,7 +3,7 @@ import 'dart:io';
 class User{
   static List<Map<String,dynamic>> allUserList = [];
   String? name;
-  int? age;
+  String? age;
   String? email;
   var password;
   User(
@@ -22,13 +22,12 @@ class User{
       "Email" : user.email,
     };
     allUserList.add(tempUser);
-    print(tempUser);
   }
 }
 
 main(){
 
-  User userOne = User(stdin.readLineSync(), stdin.readByteSync(), stdin.readLineSync(),stdin.readLineSync());
+  User userOne = User(stdin.readLineSync(), stdin.readLineSync(), stdin.readLineSync(),stdin.readLineSync());
   userOne.addUserToList(userOne);
   userOne.loginConfirmation();
   print(User.allUserList);
